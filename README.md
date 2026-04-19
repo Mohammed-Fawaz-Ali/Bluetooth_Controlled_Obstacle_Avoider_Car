@@ -93,12 +93,7 @@
 
 ## 💻 Code
 
-Two versions provided:
-
-| Version | File | Description |
-|---|---|---|
-| v1 — Basic | [`rc_car_basic.ino`](code/rc_car_basic.ino) | Simple, blocking avoidance with `delay()` |
-| v2 — Non-blocking | [`rc_car_v2.ino`](code/rc_car_v2.ino) | State machine, no dropped commands ✅ Recommended |
+The full sketch is at [`rc_car.ino`](code/rc_car.ino).
 
 ### BT Command Reference
 
@@ -110,19 +105,19 @@ Two versions provided:
 | `R` | Turn Right |
 | `S` | Stop |
 
-### Obstacle Avoidance Logic (v2)
+### Obstacle Avoidance Logic
 
 ```
 Obstacle detected (dist ≤ 20cm while moving forward)
         │
         ▼
-  [AVOID_BACK] ──── reverse for 500ms
+   Stop motors — wait 300ms
         │
         ▼
-  [AVOID_TURN] ──── turn right for 400ms
+   Move backward — 600ms
         │
         ▼
-  [BT_CONTROL] ──── resume last BT command
+   Stop — resume BT control
 ```
 
 ---
@@ -134,7 +129,7 @@ Obstacle detected (dist ≤ 20cm while moving forward)
    ```bash
    git clone https://github.com/YOUR_USERNAME/bluetooth-rc-car.git
    ```
-3. Open `code/rc_car_v2.ino` in Arduino IDE
+3. Open `code/rc_car.ino` in Arduino IDE
 4. Select **Board**: Arduino UNO | **Port**: your COM port
 5. Upload ✅
 
@@ -166,8 +161,7 @@ Use any Bluetooth Serial terminal app. Recommended:
 bluetooth-rc-car/
 │
 ├── code/
-│   ├── rc_car_basic.ino       # v1 — Simple version
-│   └── rc_car_v2.ino          # v2 — Non-blocking (recommended)
+│   └── rc_car.ino             # Main sketch
 │
 ├── media/
 │   ├── car_photo.jpg          # Your car photo
@@ -201,8 +195,7 @@ bluetooth-rc-car/
 | Car drifts left/right | Motor speed mismatch | Add PWM speed control on EN pins |
 | BT not pairing | Wrong baud rate | Default is 9600 for HC-05 AT mode |
 | Ultrasonic always reads 999 | Echo pin wiring | Check ECHO → D6 connection |
-| Commands drop during avoidance | Using v1 with `delay()` | Switch to v2 non-blocking code |
-| Car doesn't stop at obstacle | `isMovingForward()` mismatch | Use `lastCmd` state variable (v2) |
+| Commands drop during avoidance | BT sent during `delay()` block | Send command again after avoidance completes |
 
 ---
 
