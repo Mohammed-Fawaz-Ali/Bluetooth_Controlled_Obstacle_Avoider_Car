@@ -26,8 +26,6 @@
 
 - 📡 **Bluetooth Control** — Forward / Backward / Left / Right / Stop via HC-05
 - 🛡️ **Obstacle Avoidance** — Auto-reverses when object detected within 20 cm
-- ⚡ **Non-blocking Logic** — Uses `millis()` state machine; no dropped BT commands during avoidance
-- 🔄 **Smart Recovery** — Backs up → turns → resumes last command after obstacle
 - 🐛 **Serial Debug** — Obstacle distance printed to Serial Monitor
 
 ---
@@ -44,7 +42,6 @@
 | Chassis + Wheels | 1 set | 2WD chassis |
 | 9V / 7.4V LiPo Battery | 1 | Separate VCC for motors preferred |
 | Jumper Wires | — | Male-to-Male, Male-to-Female |
-| Breadboard / PCB | 1 | |
 
 ---
 
@@ -74,11 +71,9 @@
 | HC-05 Pin | Arduino Pin |
 |---|---|
 | TX | D10 (SoftwareSerial RX) |
-| RX | D11 (SoftwareSerial TX) — use voltage divider! |
+| RX | D11 (SoftwareSerial TX) |
 | VCC | 5V |
 | GND | GND |
-
-> ⚠️ HC-05 RX is 3.3V tolerant. Use a **1kΩ + 2kΩ voltage divider** between Arduino TX (D11) and HC-05 RX to protect it.
 
 #### HC-SR04 Ultrasonic → Arduino UNO
 
@@ -125,10 +120,7 @@ Obstacle detected (dist ≤ 20cm while moving forward)
 ## 📲 How to Upload
 
 1. Install [Arduino IDE](https://www.arduino.cc/en/software)
-2. Clone this repo:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/bluetooth-rc-car.git
-   ```
+2. Download `code/rc_car.ino`
 3. Open `code/rc_car.ino` in Arduino IDE
 4. Select **Board**: Arduino UNO | **Port**: your COM port
 5. Upload ✅
@@ -177,16 +169,6 @@ bluetooth-rc-car/
 
 ---
 
-## 📷 Build Photos
-
-> Replace with your actual photos
-
-| Chassis Assembly | Wiring | Final Build |
-|---|---|---|
-| ![Chassis](media/chassis.jpg) | ![Wiring](media/wiring.jpg) | ![Final](media/final.jpg) |
-
----
-
 ## 🔧 Troubleshooting
 
 | Problem | Likely Cause | Fix |
@@ -195,7 +177,6 @@ bluetooth-rc-car/
 | Car drifts left/right | Motor speed mismatch | Add PWM speed control on EN pins |
 | BT not pairing | Wrong baud rate | Default is 9600 for HC-05 AT mode |
 | Ultrasonic always reads 999 | Echo pin wiring | Check ECHO → D6 connection |
-| Commands drop during avoidance | BT sent during `delay()` block | Send command again after avoidance completes |
 
 ---
 
@@ -218,7 +199,6 @@ MIT License — free to use, modify, and share. See [LICENSE](LICENSE) for detai
 
 ## 🙋 Author
 
-**Your Name**  
-[GitHub](https://github.com/YOUR_USERNAME) · [LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
+**Mohammed Fawaz Ali**  
 
 > If this helped you, drop a ⭐ on the repo!
