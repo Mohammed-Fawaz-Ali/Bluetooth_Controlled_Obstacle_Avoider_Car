@@ -2,9 +2,7 @@
 ### Arduino UNO · HC-05 · L293D · HC-SR04
 
 [![Arduino](https://img.shields.io/badge/Arduino-UNO-00979D?style=flat&logo=arduino&logoColor=white)](https://www.arduino.cc/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Arduino-blue)](https://www.arduino.cc/)
-[![Status](https://img.shields.io/badge/Status-Working-brightgreen)]()
 
 > A Bluetooth-controlled RC car that avoids obstacles automatically using an ultrasonic sensor. Control it from your phone via any Bluetooth serial app — and it backs away on its own if it's about to crash.
 
@@ -12,13 +10,9 @@
 
 ## 📸 Demo
 
-> 📷 *Add your car photo here — replace the path below*
+![Car Photo](media/image2.jpg)
 
-![Car Photo](media/car_photo.jpg)
-
-> 🎥 *Add your demo video here — upload to YouTube and paste the link*
-
-[![Demo Video](https://img.shields.io/badge/▶%20Watch%20Demo-YouTube-red?style=for-the-badge&logo=youtube)](https://youtube.com/YOUR_VIDEO_LINK_HERE)
+https://github.com/user-attachments/assets/a044dc43-8989-413c-89e4-61ac1d65078e
 
 ---
 
@@ -46,8 +40,6 @@
 ---
 
 ## 🔌 Circuit Diagram
-
-> 📷 *Replace with your actual Fritzing/schematic image*
 
 ![Circuit Diagram](media/circuit_diagram.png)
 
@@ -146,26 +138,6 @@ Use any Bluetooth Serial terminal app. Recommended:
 4. Map buttons to send `F`, `B`, `L`, `R`, `S` characters
 
 ---
-
-## 📁 Project Structure
-
-```
-bluetooth-rc-car/
-│
-├── code/
-│   └── rc_car.ino             # Main sketch
-│
-├── media/
-│   ├── car_photo.jpg          # Your car photo
-│   ├── circuit_diagram.png    # Fritzing / schematic
-│   ├── wiring_photo.jpg       # Actual wiring photo
-│   └── demo_video.mp4         # Or link to YouTube
-│
-├── fritzing/
-│   └── rc_car_circuit.fzz     # Fritzing project file (optional)
-│
-└── README.md
-```
 
 ---
 
